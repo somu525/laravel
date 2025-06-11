@@ -8,6 +8,11 @@ use App\Http\Controllers\SessionController;
 use App\Mail\JobPosted;
 use Illuminate\Support\Facades\Mail;
 
+Route::get('test',function () {
+    $job=\App\Models\Job::first();
+    \App\Jobs\TranslateJob::dispatch($job);
+    return 'Done';
+});
 
 Route::view('/','home');   
 
